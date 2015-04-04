@@ -1,7 +1,7 @@
 template = 
   """
     <div class="form-group {{ formGroupClass }}" ng-class="{ 'has-error': hasError && formDirty }">
-      <label for="{{ for }}" ng-bind="{{ label }}" class="control-label {{ labelClass }}"></label>
+      <label for="{{ for }}" ng-bind="label" class="control-label {{ labelClass }}"></label>
       <div class="{{ transcludeClass }}">
         <div ng-transclude> </div>
         <div ng-show="formDirty" class="help-block">
