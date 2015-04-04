@@ -1,0 +1,29 @@
+{
+  "name": "angular-bootstrap-form-group",
+  "version": "0.0.1",
+  "author": {
+    "name": "Lawrence Cheung",
+    "email": "lawrence0819@gmail.com",
+    "url": "http://www.ctlok.com"
+  },
+  "private": false,
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://outsider.mit-license.org/"
+    }
+  ],
+  "devDependencies": {
+    "coffee-script": "~1.9.1",
+    "karma": "~0.12.31",
+    "karma-mocha": "~0.1.0",
+    "karma-chai": "~0.1.0",
+    "karma-coffee-preprocessor": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "karma-mocha-reporter": "~1.0.0",
+    "karma-junit-reporter": "~0.2.2",
+    "karma-coverage": "~0.2.4",
+    "karma-sinon-chai": "~0.3.0"
+  },
+  "dependencies": {}
+}
