@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .panel{
+        margin-top: 20%;
+      }
+    </style>
+  </head>
+  <body ng-controller="InputFormController">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h1 class="panel-title" translate="FORM_TITLE"></h1>
+            </div>
+            <div class="panel-body">
+              <form name="form" role="form" novalidate>
+                <div form-group label="{{'FIELD.EMAIL' | translate}}">
+                  <input id="email" type="text" ng-model="user.email" name="email" class="form-control"
+                    ng-minlength="10"
+                    ng-maxlength="100"
+                    ng-pattern="/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" 
+                    ng-em-required="VALIDATION.REQUIRED"
+                    ng-em-minlength="VALIDATION.MIN_LENGTH"
+                    ng-em-maxlength="VALIDATION.MAX_LENGTH"
+                    ng-em-pattern="VALIDATION.PATTERN_EMAIL"
+                    required/>
+                </div>
+                <div form-group label="{{'FIELD.USERNAME' | translate}}">
+                  <input id="username" type="text" ng-model="user.username" name="username" class="form-control"
+                    ng-minlength="3"
+                    ng-maxlength="30"
+                    ng-pattern="/^[A-Za-z0-9_]+$/"
+                    ng-em-required="VALIDATION.REQUIRED"
+                    ng-em-minlength="VALIDATION.MIN_LENGTH"
+                    ng-em-maxlength="VALIDATION.MAX_LENGTH"
+                    ng-em-pattern="VALIDATION.PATTERN_ENGLISH_AND_NUMBER_CHAR"
+                    required/>
+                </div>
+                <div form-group label="{{'FIELD.PASSWORD' | translate}}">
+                  <input id="password" type="password" ng-model="user.password" name="password" class="form-control"
+                    ng-minlength="6"
+                    ng-maxlength="30"
+                    ng-em-required="VALIDATION.REQUIRED"
+                    ng-em-minlength="VALIDATION.MIN_LENGTH"
+                    ng-em-maxlength="VALIDATION.MAX_LENGTH"
+                    required/>
+                </div>
+                <div form-group label="{{'FIELD.PASSWORD_CONFIRMATION' | translate}}">
+                  <input id="passwordConfirmation" type="password" ng-model="user.passwordConfirmation" name="passwordConfirmation" class="form-control"
+                    ng-minlength="6"
+                    ng-maxlength="30"
+                    ng-em-required="VALIDATION.REQUIRED"
+                    ng-em-minlength="VALIDATION.MIN_LENGTH"
+                    ng-em-maxlength="VALIDATION.MAX_LENGTH"
+                    ng-em-password-not-match="VALIDATION.PASSWORD_NOT_MATCH"
+                    required/>
+                </div>
+                <button type="submit" class="btn btn-success btn-block" ng-disabled="form.$invalid" translate="BUTTON.SUBMIT">
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.28/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.2.0/angular-translate.min.js"></script>
+    <script src="./js/angular-bootstrap-form-group.min.js"></script>
+    <script src="./js/translate.js"></script>
+  </body>
+</html>
