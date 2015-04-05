@@ -2,13 +2,11 @@
 
 Form group directive for AngularJs. This directive integrate Bootstrap's form and Angularjs for auto display validation message and reduce redundanc HTML.
 
-
 ### Demos
 
-1. `git clone https://github.com/lawrence0819/angular-bootstrap-form-group.git`
-2. cd angular-bootstrap-form-group
-3. cd demo
-4. open html file
+* [General Form](http://pro.ctlok.com/angular-bootstrap-form-group/example/general-form.html)
+* [Horizontal Form](http://pro.ctlok.com/angular-bootstrap-form-group/example/horizontal-form.html)
+* [Angular Translate Support](http://pro.ctlok.com/angular-bootstrap-form-group/example/angular-translate.html)
 
 ### Getting Started
 
