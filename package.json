@@ -10,7 +10,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://outsider.mit-license.org/"
+      "url": "http://mit-license.org/"
     }
   ],
   "devDependencies": {
@@ -31,5 +31,8 @@
     "karma-coverage": "~0.2.4",
     "karma-sinon-chai": "~0.3.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "test": "node ./node_modules/karma/bin/karma start ./test/karma.conf.js && node ./node_modules/karma/bin/karma start ./test/karma.translate.conf.js"
+  }
 }
