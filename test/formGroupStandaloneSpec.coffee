@@ -6,10 +6,12 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
 
   validation = (template, value, htmlString, htmlContainMessage) ->
 
-    $rootScope.foo = value
     element = $compile(template)($rootScope)
-    $rootScope.form.foo.$setViewValue value
-    $rootScope.$digest()
+
+    $rootScope.$apply ->
+
+      $rootScope.foo = value
+      $rootScope.form.foo.$setViewValue value
 
     if htmlContainMessage
 
@@ -34,6 +36,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
       $injector = _$injector_
       $compile = _$compile_
       $rootScope = _$rootScope_
+      $rootScope.foo = ''
 
   describe 'Angularjs init', ->
 
@@ -83,7 +86,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <input type="text" name="foo" ng-model="$root.foo" ng-em-required="Require Value" required />
+              <input type="text" name="foo" ng-model="foo" ng-em-required="Require Value" required />
             </div>
           </form>
         """
@@ -102,7 +105,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <input type="text" name="foo" ng-model="$root.foo" ng-em-required="Require Value" ng-required="true" />
+              <input type="text" name="foo" ng-model="foo" ng-em-required="Require Value" ng-required="true" />
             </div>
           </form>
         """
@@ -121,7 +124,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <input type="text" name="foo" ng-model="$root.foo" ng-em-minlength="At least enter 2 characters" ng-minlength="2" />
+              <input type="text" name="foo" ng-model="foo" ng-em-minlength="At least enter 2 characters" ng-minlength="2" />
             </div>
           </form>
         """
@@ -140,7 +143,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <input type="text" name="foo" ng-model="$root.foo" ng-em-maxlength="Cannot over 10 characters" ng-maxlength="10" />
+              <input type="text" name="foo" ng-model="foo" ng-em-maxlength="Cannot over 10 characters" ng-maxlength="10" />
             </div>
           </form>
         """
@@ -163,7 +166,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <input type="text" name="foo" ng-model="$root.foo" ng-em-pattern="Only accept input upper case english character" ng-pattern="/^[A-Z]*$/" />
+              <input type="text" name="foo" ng-model="foo" ng-em-pattern="Only accept input upper case english character" ng-pattern="/^[A-Z]*$/" />
             </div>
           </form>
         """
@@ -186,7 +189,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <input type="number" name="foo" ng-model="$root.foo" ng-em-required="Require Value" require />
+              <input type="number" name="foo" ng-model="foo" ng-em-required="Require Value" require />
             </div>
           </form>
         """
@@ -201,7 +204,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <input type="number" name="foo" ng-model="$root.foo" ng-em-required="Require Value" ng-require="true" />
+              <input type="number" name="foo" ng-model="foo" ng-em-required="Require Value" ng-require="true" />
             </div>
           </form>
         """
@@ -216,7 +219,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <input type="number" name="foo" ng-model="$root.foo" ng-em-min="Cannot less then 10" min="10" />
+              <input type="number" name="foo" ng-model="foo" ng-em-min="Cannot less then 10" min="10" />
             </div>
           </form>
         """
@@ -235,7 +238,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <input type="number" name="foo" ng-model="$root.foo" ng-em-max="Cannot greater then 10" max="10" />
+              <input type="number" name="foo" ng-model="foo" ng-em-max="Cannot greater then 10" max="10" />
             </div>
           </form>
         """
@@ -247,6 +250,36 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
       it 'should hide max message when model value less then or equal to max value', ->
 
         validationOk template, 10, 'Cannot greater then 10'
+
+    describe 'input custom validation', ->
+
+      listener = null
+      template =
+        """
+          <form name="form">
+            <div form-group>
+              <input type="number" name="foo" ng-model="foo" ng-em-custom-validation="Custom Message" />
+            </div>
+          </form>
+        """
+
+      beforeEach ->
+
+        listener = $rootScope.$watch 'foo', (newValue, oldValue) ->
+
+          $rootScope.form.foo.$setValidity 'CUSTOM-VALIDATION', newValue is 'A'
+
+      afterEach ->
+
+        listener()
+
+      it 'should display custom message when model value is B', ->
+
+        validationFailed template, 'B', 'Custom Message'
+
+      it 'should hide custom message when model value is A', ->
+
+        validationOk template, 'A', 'Custom Message'
 
   describe 'select element', ->
 
@@ -260,7 +293,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <select name="foo" ng-options="item for item in $root.items" ng-model="$root.foo" ng-em-required="Require Value" required>
+              <select name="foo" ng-options="item for item in $root.items" ng-model="foo" ng-em-required="Require Value" required>
             </div>
           </form>
         """
@@ -279,7 +312,7 @@ describe 'Bootstrap Form Group Directive - Standalone', ->
         """
           <form name="form">
             <div form-group>
-              <select name="foo" ng-options="item for item in $root.items" ng-model="$root.foo" ng-em-required="Require Value" required>
+              <select name="foo" ng-options="item for item in $root.items" ng-model="foo" ng-em-required="Require Value" required>
             </div>
           </form>
         """
