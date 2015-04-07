@@ -3,7 +3,9 @@ template =
     <div class="form-group {{ formGroupClass }}" ng-class="{ 'has-error': hasError && formDirty }">
       <label for="{{ for }}" ng-bind="label" class="control-label {{ labelClass }}"></label>
       <span></span>
-      <p ng-repeat="error in errors" ng-if="error.notValid" class="text-danger" ng-bind="error.message"></p>
+      <div ng-show="formDirty" class="help-block">
+        <p ng-repeat="error in errors" ng-if="error.notValid" class="text-danger" ng-bind="error.message"></p>
+      </div>
     </div>
   """
 

@@ -1,7 +1,7 @@
 (function() {
   var inputTagNmaes, template;
 
-  template = "<div class=\"form-group {{ formGroupClass }}\" ng-class=\"{ 'has-error': hasError && formDirty }\">\n  <label for=\"{{ for }}\" ng-bind=\"label\" class=\"control-label {{ labelClass }}\"></label>\n  <span></span>\n  <p ng-repeat=\"error in errors\" ng-if=\"error.notValid\" class=\"text-danger\" ng-bind=\"error.message\"></p>\n</div>";
+  template = "<div class=\"form-group {{ formGroupClass }}\" ng-class=\"{ 'has-error': hasError && formDirty }\">\n  <label for=\"{{ for }}\" ng-bind=\"label\" class=\"control-label {{ labelClass }}\"></label>\n  <span></span>\n  <div ng-show=\"formDirty\" class=\"help-block\">\n    <p ng-repeat=\"error in errors\" ng-if=\"error.notValid\" class=\"text-danger\" ng-bind=\"error.message\"></p>\n  </div>\n</div>";
 
   inputTagNmaes = ['input', 'select', 'textarea'];
 
