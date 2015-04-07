@@ -2,12 +2,8 @@ template =
   """
     <div class="form-group {{ formGroupClass }}" ng-class="{ 'has-error': hasError && formDirty }">
       <label for="{{ for }}" ng-bind="label" class="control-label {{ labelClass }}"></label>
-      <div class="{{ transcludeClass }}">
-        <div ng-transclude> </div>
-        <div ng-show="formDirty" class="help-block">
-          <p ng-repeat="error in errors" ng-if="error.notValid" class="text-danger" ng-bind="error.message"></p>
-        </div>
-      </div>
+      <span></span>
+      <p ng-repeat="error in errors" ng-if="error.notValid" class="text-danger" ng-bind="error.message"></p>
     </div>
   """
 
@@ -26,9 +22,11 @@ angular.module('bootstrap.formGroup', [])
       label: "@"
       formGroupClass: "@"
       labelClass: "@"
-      transcludeClass: "@"
 
-    link: ($scope, element, attrs, formController) ->
+    link: ($scope, element, attrs, formController, transclude) ->
+
+      transclude (t) ->
+        element.find('span').replaceWith t
 
       input = null
 

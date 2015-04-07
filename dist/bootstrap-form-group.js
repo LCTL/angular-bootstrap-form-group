@@ -1,7 +1,7 @@
 (function() {
   var inputTagNmaes, template;
 
-  template = "<div class=\"form-group {{ formGroupClass }}\" ng-class=\"{ 'has-error': hasError && formDirty }\">\n  <label for=\"{{ for }}\" ng-bind=\"label\" class=\"control-label {{ labelClass }}\"></label>\n  <div class=\"{{ transcludeClass }}\">\n    <div ng-transclude> </div>\n    <div ng-show=\"formDirty\" class=\"help-block\">\n      <p ng-repeat=\"error in errors\" ng-if=\"error.notValid\" class=\"text-danger\" ng-bind=\"error.message\"></p>\n    </div>\n  </div>\n</div>";
+  template = "<div class=\"form-group {{ formGroupClass }}\" ng-class=\"{ 'has-error': hasError && formDirty }\">\n  <label for=\"{{ for }}\" ng-bind=\"label\" class=\"control-label {{ labelClass }}\"></label>\n  <span></span>\n  <p ng-repeat=\"error in errors\" ng-if=\"error.notValid\" class=\"text-danger\" ng-bind=\"error.message\"></p>\n</div>";
 
   inputTagNmaes = ['input', 'select', 'textarea'];
 
@@ -16,11 +16,13 @@
         scope: {
           label: "@",
           formGroupClass: "@",
-          labelClass: "@",
-          transcludeClass: "@"
+          labelClass: "@"
         },
-        link: function($scope, element, attrs, formController) {
+        link: function($scope, element, attrs, formController, transclude) {
           var dirtyExpression, errorExpression, form, formName, input, inputId, inputName, invalidExpression, tagName, _i, _len;
+          transclude(function(t) {
+            return element.find('span').replaceWith(t);
+          });
           input = null;
           for (_i = 0, _len = inputTagNmaes.length; _i < _len; _i++) {
             tagName = inputTagNmaes[_i];
