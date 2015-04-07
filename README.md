@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lawrence0819/angular-bootstrap-form-group.svg?branch=master)](https://travis-ci.org/lawrence0819/angular-bootstrap-form-group)
+
 # Angular Bootstrap Form Group Directive
 
 Form group directive for AngularJs. This directive integrate Bootstrap's form and Angularjs for auto display validation message and reduce redundanc HTML.
