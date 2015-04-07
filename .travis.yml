@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "0.12"
+install:
+  - npm install -g bower
+  - npm install -g gulp
+  - npm install -g karma
+  - bower install
+script:
+  - cd test
+  - karma start karma.conf.js
+  - karma start karma.translate.conf.js
