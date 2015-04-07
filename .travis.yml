@@ -3,11 +3,7 @@ node_js:
   - "0.12"
 install:
   - npm install -g bower
-  - npm install -g gulp
-  - npm install -g karma-cli
   - npm install
   - bower install
 script:
-  - cd test
-  - karma start karma.conf.js
-  - karma start karma.translate.conf.js
+  - npm test
