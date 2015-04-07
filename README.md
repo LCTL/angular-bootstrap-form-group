@@ -7,6 +7,7 @@ Form group directive for AngularJs. This directive integrate Bootstrap's form an
 * [General Form](http://pro.ctlok.com/angular-bootstrap-form-group/example/general-form.html)
 * [Horizontal Form](http://pro.ctlok.com/angular-bootstrap-form-group/example/horizontal-form.html)
 * [Angular Translate Support](http://pro.ctlok.com/angular-bootstrap-form-group/example/angular-translate.html)
+* [Input Feeback](http://pro.ctlok.com/angular-bootstrap-form-group/example/feedback-form.html)
 
 ### Getting Started
 
