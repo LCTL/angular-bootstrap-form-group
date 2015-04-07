@@ -4,7 +4,8 @@ node_js:
 install:
   - npm install -g bower
   - npm install -g gulp
-  - npm install -g karma
+  - npm install -g karma-cli
+  - npm install
   - bower install
 script:
   - cd test
