@@ -11,8 +11,7 @@ module.exports = function(config) {
       'bower_components/angular-translate/angular-translate.js',
       'src/*.coffee',
       'test/translate-test-app.coffee',
-      'test/formGroupTranslateSpec.coffee',
-      {pattern: 'test/en.json', included: false}
+      'test/formGroupTranslateSpec.coffee'
     ]
   });
 };
