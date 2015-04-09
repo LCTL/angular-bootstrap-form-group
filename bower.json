@@ -1,6 +1,7 @@
 {
   "name": "angular-bootstrap-form-group",
   "version": "0.0.1",
+  "main": "dist/angular-bootstrap-form-group.min.js",
   "dependencies": {
     "angularjs": "1.2.28"
   },
