@@ -19,6 +19,10 @@ coverage
 # node-waf configuration
 .lock-wscript
 
+#Editor
+.idea
+*.iml
+
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 

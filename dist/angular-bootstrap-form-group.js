@@ -1,9 +1,9 @@
 (function() {
-  var inputTagNmaes, template;
+  var inputTagNames, template;
 
   template = "<div class=\"form-group {{ formGroupClass }}\" ng-class=\"{ 'has-error': hasError && formDirty }\">\n  <label for=\"{{ for }}\" ng-bind=\"label\" class=\"control-label {{ labelClass }}\"></label>\n  <span></span>\n  <div ng-show=\"formDirty\" class=\"help-block\">\n    <p ng-repeat=\"error in errors\" ng-if=\"error.notValid\" class=\"text-danger\" ng-bind=\"error.message\"></p>\n  </div>\n</div>";
 
-  inputTagNmaes = ['input', 'select', 'textarea'];
+  inputTagNames = ['input', 'select', 'textarea'];
 
   angular.module('bootstrap.formGroup', []).directive('formGroup', [
     '$injector', function($injector) {
@@ -12,20 +12,20 @@
         template: template,
         replace: true,
         transclude: true,
-        require: "^form",
+        require: '^form',
         scope: {
-          label: "@",
-          formGroupClass: "@",
-          labelClass: "@"
+          label: '@',
+          formGroupClass: '@',
+          labelClass: '@'
         },
         link: function($scope, element, attrs, formController, transclude) {
           var dirtyExpression, errorExpression, form, formName, input, inputId, inputName, invalidExpression, tagName, _i, _len;
-          transclude(function(t) {
-            return element.find('span').replaceWith(t);
+          transclude(function(inputElement) {
+            return element.find('span').replaceWith(inputElement);
           });
           input = null;
-          for (_i = 0, _len = inputTagNmaes.length; _i < _len; _i++) {
-            tagName = inputTagNmaes[_i];
+          for (_i = 0, _len = inputTagNames.length; _i < _len; _i++) {
+            tagName = inputTagNames[_i];
             input = element.find(tagName);
             if (input.length > 0) {
               break;
@@ -40,7 +40,6 @@
             }
             formName = form.attr('name');
             $scope["for"] = inputId;
-            $scope.form = $scope.form;
             invalidExpression = [formName, inputName, '$invalid'].join('.');
             dirtyExpression = [formName, inputName, '$dirty'].join('.');
             errorExpression = [formName, inputName, '$error'].join('.');

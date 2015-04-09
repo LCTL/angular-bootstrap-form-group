@@ -9,7 +9,7 @@ template =
     </div>
   """
 
-inputTagNmaes = ['input', 'select', 'textarea']
+inputTagNames = ['input', 'select', 'textarea']
 
 angular.module('bootstrap.formGroup', [])
 
@@ -19,20 +19,20 @@ angular.module('bootstrap.formGroup', [])
     template: template
     replace: true
     transclude: true
-    require: "^form"
+    require: '^form'
     scope:
-      label: "@"
-      formGroupClass: "@"
-      labelClass: "@"
+      label: '@'
+      formGroupClass: '@'
+      labelClass: '@'
 
     link: ($scope, element, attrs, formController, transclude) ->
 
-      transclude (t) ->
-        element.find('span').replaceWith t
+      transclude (inputElement) ->
+        element.find('span').replaceWith inputElement
 
       input = null
 
-      for tagName in inputTagNmaes
+      for tagName in inputTagNames
         input = element.find tagName
         if input.length > 0
           break
@@ -48,7 +48,6 @@ angular.module('bootstrap.formGroup', [])
         formName = form.attr 'name'
 
         $scope.for = inputId
-        $scope.form = $scope.form
       
         invalidExpression = [formName, inputName, '$invalid'].join '.'
         dirtyExpression = [formName, inputName, '$dirty'].join '.'
