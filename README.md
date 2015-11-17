@@ -11,6 +11,14 @@ Form group directive for AngularJs. This directive integrate Bootstrap's form an
 * [Angular Translate Support](http://pro.ctlok.com/angular-bootstrap-form-group/example/angular-translate.html)
 * [Input Feeback](http://pro.ctlok.com/angular-bootstrap-form-group/example/feedback-form.html)
 
+### Installation
+
+`bower install angular-bootstrap-form-group --save`
+
+or
+
+`npm install angular-bootstrap-form-group --save`
+
 ### Getting Started
 
 ```
@@ -39,12 +47,3 @@ Form group directive for AngularJs. This directive integrate Bootstrap's form an
 ```
 
 ng-em-* is a validation message attribute for directive display correspondence message when validation failed.
-
-
-### Development
-
-```
-npm install
-
-bower install
-```
